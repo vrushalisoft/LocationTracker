@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  // Main content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          .card.card-primary.card-outline
+            .card-header
+              h5.m-0 Device
+                button.btn.btn-sm.btn-primary(style='float: right;' onclick="addDevice(null)")
+                  .fa.fa-plus
+                  |   Add Device
+
+            .card-body
+              table#deviceTable.table.table-bordered.table-striped
+      
+
+block append scripts
+  script(src='dist/js/pages/device.js')
+
+  script.
+    $(function () {
+      getDeviceData()
+    });

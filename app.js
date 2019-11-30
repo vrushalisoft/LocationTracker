@@ -20,6 +20,8 @@ var ModelNosRouter = require('./routes/modelnos');
 var Masters = require('./routes/masters');
 var ItemsRouter = require('./routes/items');
 
+var deviceController = require('./controllers/device')
+
 var app = express();
 
 // view engine setup
@@ -38,26 +40,33 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
-var path = process.env.ONLINE_DB_STRING
+var path = process.env.LOCAL_DB_STRING
 
 mongoose.connect(path, function (err, db) {
     if(err) console.log(err);
     else console.log('Connected To Db')
 });
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/processor', processRouter);
-app.use('/ram', ramRouter);
-app.use('/sparetypes', SpareTypesRouter);
-app.use('/screens', ScreensRouter);
-app.use('/storages', StoragesRouter);
-app.use('/itemtypes', ItemTypesRouter);
-app.use('/brands', BrandsRouter);
-app.use('/vendors', VendorsRouter);
-app.use('/modelnos', ModelNosRouter);
-app.use('/master', Masters);
-app.use('/items', ItemsRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+// app.use('/processor', processRouter);
+// app.use('/ram', ramRouter);
+// app.use('/sparetypes', SpareTypesRouter);
+// app.use('/screens', ScreensRouter);
+// app.use('/storages', StoragesRouter);
+// app.use('/itemtypes', ItemTypesRouter);
+// app.use('/brands', BrandsRouter);
+// app.use('/vendors', VendorsRouter);
+// app.use('/modelnos', ModelNosRouter);
+// app.use('/master', Masters);
+// app.use('/items', ItemsRouter);
+
+app.get('/device', deviceController.index)
+app.get('/device/all', deviceController.getAllDevices)
+app.get('/device/id/:_id', deviceController.getDeviceById)
+app.post('/device', deviceController.upsertDevice)
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

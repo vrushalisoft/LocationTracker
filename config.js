@@ -1,3 +1,4 @@
 module.exports.tables = {
-  PROCESSOR : "Processors"
+  DEVICE : "devices",
+  ACCOUNT : "accounts"
 }

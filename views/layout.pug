@@ -126,7 +126,7 @@ html(lang='en')
           // Brand Logo
           a.brand-link(href='index3.html')
             img.brand-image.img-circle.elevation-3(src='dist/img/AdminLTELogo.png', alt='AdminLTE Logo', style='opacity: .8')
-            span.brand-text.font-weight-light LaptoSoft
+            span.brand-text.font-weight-light LocationTracker
           // Sidebar
           .sidebar
             // Sidebar Menu
@@ -137,17 +137,17 @@ html(lang='en')
                   with font-awesome or any other icon font library
                 
                 li.nav-item
-                  a.nav-link(href='/login')
+                  a.nav-link(href='/device')
                     i.nav-icon.fas.fa-lock
                     p
-                      | Login
+                      | Device
                       
                       
                 li.nav-item
-                  a.nav-link(href='/master')
+                  a.nav-link(href='/account')
                     i.nav-icon.fas.fa-th
                     p
-                      | Masters
+                      | Account
                       span.right.badge.badge-danger New
             // /.sidebar-menu
             // /.sidebar
@@ -194,31 +194,31 @@ html(lang='en')
             a(href='https://adminlte.io') AdminLTE.io
             | .
           |  All rights reserved.
-    #processor-modal.modal.fade
+    #device-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#processor-modal-title Add Processor
+            h4.modal-title#processor-modal-title Add Device
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
             form
-            label Name
+            label IMEI Number
             .input-group.mb-3
-              input.form-control(type='hidden', id='processor_id')
-              input.form-control(type='text', placeholder='Name', id='processor_name' required)
+              input.form-control(type='hidden', id='device_id')
+              input.form-control(type='text', placeholder='IMEI Number', id='device_imei_no' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-cog
-            label Speed    
+            label Sim Number   
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Speed', id='processor_speed', required)
+              input.form-control(type='text', placeholder='Sim Number', id='device_sim_no', required)
               .input-group-append
                 .input-group-text
-                  span.fas.fa-microchip
+                  span.fas.fa-microchip   
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_processor_button") Save changes
+            button.btn.btn-primary(type='button', id="add_device_button") Save changes
 
     #ram-modal.modal.fade
       .modal-dialog

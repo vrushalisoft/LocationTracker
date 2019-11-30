@@ -1,6 +1,7 @@
-var local = 'http://localhost:3000'
+var local = 'http://localhost:3001'
 var online = 'https://laptopsoft.herokuapp.com'
-var used_host = online
+var today = new Date()
+var used_host = local
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',

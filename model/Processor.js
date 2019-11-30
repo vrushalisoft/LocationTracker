@@ -4,7 +4,6 @@ var config = require('../config')
 
 var ProcessorSchema = new Schema({
   name: {type: String, required: [true, 'Name is required']},
-  speed: {type: String, required: [true, 'Speed is required']}
 },{collection:config.tables.PROCESSOR})
 
 var Processor = module.exports = mongoose.model('Processor',ProcessorSchema,config.tables.PROCESSOR);
