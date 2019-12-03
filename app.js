@@ -6,21 +6,26 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 require('dotenv').config();
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var processRouter = require('./routes/processor');
-var ramRouter = require('./routes/ram');
-var SpareTypesRouter = require('./routes/sparetypes');
-var ScreensRouter = require('./routes/screens');
-var StoragesRouter = require('./routes/storages');
-var ItemTypesRouter = require('./routes/itemtypes');
-var BrandsRouter = require('./routes/brands');
-var VendorsRouter = require('./routes/vendors');
-var ModelNosRouter = require('./routes/modelnos');
-var Masters = require('./routes/masters');
-var ItemsRouter = require('./routes/items');
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
+//var processRouter = require('./routes/processor');
+//var ramRouter = require('./routes/ram');
+//var SpareTypesRouter = require('./routes/sparetypes');
+//var ScreensRouter = require('./routes/screens');
+//var StoragesRouter = require('./routes/storages');
+//var ItemTypesRouter = require('./routes/itemtypes');
+//var BrandsRouter = require('./routes/brands');
+//var VendorsRouter = require('./routes/vendors');
+//var ModelNosRouter = require('./routes/modelnos');
+//var Masters = require('./routes/masters');
+//var ItemsRouter = require('./routes/items');
 
-var deviceController = require('./controllers/device')
+var deviceController = require('./controllers/device');
+var accountController = require('./controllers/account');
+var companyController = require('./controllers/company');
+var customerController = require('./controllers/customer');
+var customer_userController = require('./controllers/customer_user');
+var locationController = require('./controllers/location');
 
 var app = express();
 
@@ -65,6 +70,27 @@ app.get('/device', deviceController.index)
 app.get('/device/all', deviceController.getAllDevices)
 app.get('/device/id/:_id', deviceController.getDeviceById)
 app.post('/device', deviceController.upsertDevice)
+app.get('/account', accountController.index)
+app.get('/account/all', accountController.getAllAccounts)
+app.get('/account/id/:_id', accountController.getAccountById)
+app.post('/account', accountController.upsertAccount)
+app.get('/company', companyController.index)
+app.get('/company/all', companyController.getAllCompanys)
+app.get('/company/id/:_id', companyController.getCompanyById)
+app.post('/company', companyController.upsertCompany)
+app.get('/customer', customerController.index)
+app.get('/customer/all', customerController.getAllCustomers)
+app.get('/customer/id/:_id', customerController.getCustomerById)
+app.post('/customer', customerController.upsertCustomer)
+app.get('/customer_user', customer_userController.index)
+app.get('/customer_user/all', customer_userController.getAllCustomerUsers)
+app.get('/customer_user/id/:_id', customer_userController.getCustomerUserById)
+app.post('/customer_user', customer_userController.upsertCustomerUser)
+app.get('/location', locationController.index)
+app.get('/location/all', locationController.getAllLocations)
+app.get('/location/id/:_id', locationController.getLocationById)
+app.post('/location', locationController.upsertLocation)
+
 
 
 

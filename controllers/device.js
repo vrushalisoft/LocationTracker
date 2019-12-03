@@ -46,7 +46,7 @@ module.exports.getDeviceById = (req, res) => {
     message: "Err Querying database while fetching device by id, Try again",
     details: []
   };
-  Processor.findById(deviceId, {__v:0}, (err, device)=>{
+  Device.findById(deviceId, {__v:0}, (err, device)=>{
     if(err) {
       res.json(retObj)
     } else {

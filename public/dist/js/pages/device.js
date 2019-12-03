@@ -204,7 +204,7 @@ $('#add_device_button').click(function (params) {
     data.alocated = false;
     data.asigned = false
   }
-  console.log('Got Process Form Values');
+  console.log('Got Device Form Values');
   console.log(data);
     
   addDevice(data)

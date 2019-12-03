@@ -138,17 +138,41 @@ html(lang='en')
                 
                 li.nav-item
                   a.nav-link(href='/device')
-                    i.nav-icon.fas.fa-lock
+                    i.nav-icon.fas.fa-layer-group
                     p
                       | Device
                       
                       
                 li.nav-item
                   a.nav-link(href='/account')
-                    i.nav-icon.fas.fa-th
+                    i.nav-icon.fas.fa-layer-group
                     p
                       | Account
-                      span.right.badge.badge-danger New
+
+                li.nav-item
+                  a.nav-link(href='/company')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Company 
+
+                li.nav-item
+                  a.nav-link(href='/customer')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Customer 
+
+                li.nav-item
+                  a.nav-link(href='/customer_user')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Customer User     
+
+                li.nav-item
+                  a.nav-link(href='/location')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Location    
+
             // /.sidebar-menu
             // /.sidebar
       
@@ -220,120 +244,314 @@ html(lang='en')
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button', id="add_device_button") Save changes
 
-    #ram-modal.modal.fade
+    #account-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#ram-modal-title Add Ram
+            h4.modal-title#account-modal-title Add User
             button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
+              span(aria-hidden='true')   
           .modal-body
             form
-            label Type
+            label First Name
             .input-group.mb-3
-              input.form-control(type='hidden', id='ram_id')
-              input.form-control(type='text', placeholder='Type', id='ram_type' required)
+              input.form-control(type='hidden', id='account_id')
+              input.form-control(type='text', placeholder='First Name', id='account_first_name'  required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-hdd
-            label Size     
+            label Last Name     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Size', id='ram_size', required)
+              input.form-control(type='text', placeholder='Last Name', id='account_last_name', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Role
+            .input-group.mb-3
+              select.custom-select#role_selection_box
+               option(value="Account Executive") Account Executive
+               option(value="Account Manager") Account Manager
+                option(value="Account User") Account User
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-hdd
+            label Contact Number     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Contact Number', id='account_contact_no', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd
+            label Contact Person       
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Contact Person', id='account_contact_person', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label Street      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Street', id='account_street', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label City      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='City', id='account_city', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label State     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='State', id='account_state', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Zip       
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Zip', id='account_zip', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd 
+            label Email
+            .input-group.mb-3
+              input.form-control(type='email', placeholder='Email', id='account_email', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label Password
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Password', id='account_password', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd                                           
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_ram_button") Save changes
+            button.btn.btn-primary(type='button', id="add_account_button") Save changes
 
-    #sparetype-modal.modal.fade
+    #company-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#sparetype-modal-title Add SpareType
+            h4.modal-title#company-modal-title Add Company
             button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
+              span(aria-hidden='true') 
           .modal-body
             form
-            label Name
+            label Company Name
             .input-group.mb-3
-              input.form-control(type='hidden', id='sparetype_id')
-              input.form-control(type='text', placeholder='Name', id='sparetype_name' required)
+              input.form-control(type='hidden', id='company_id')
+              input.form-control(type='text', placeholder='Company Name', id='company_name' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop-medical
+            label Street      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Street', id='company_street', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label City      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='City', id='company_city', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label State     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='State', id='company_state', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Zip       
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Zip', id='company_zip', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_sparetype_button") Save changes
+            button.btn.btn-primary(type='button', id="add_company_button") Save changes
 
-    #itemtype-modal.modal.fade
+    #customer-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#itemtype-modal-title Add ItemType
+            h4.modal-title#customer-modal-title Add Customer
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
             form
-            label Name
+            label Customer Name
             .input-group.mb-3
-              input.form-control(type='hidden', id='itemtype_id')
-              input.form-control(type='text', placeholder='Name', id='itemtype_name' required)
+              input.form-control(type='hidden', id='customer_id')
+              input.form-control(type='text', placeholder='Customer Name', id='customer_name' required)
               .input-group-append
                 .input-group-text
-                  span.fas.fa-laptop
+                  span.fas.fa-laptop-medical
+            label Street      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Street', id='customer_street', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label City      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='City', id='customer_city', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label State     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='State', id='customer_state', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Zip       
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Zip', id='customer_zip', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd 
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_itemtype_button") Save changes  
+            button.btn.btn-primary(type='button', id="add_customer_button") Save changes  
 
-    #screen-modal.modal.fade
+    #customer_user-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#screen-modal-title Screen
+            h4.modal-title#customer_user-modal-title Customer User
             button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
+              span(aria-hidden='true') 
           .modal-body
             form
-            label Resolution
+            label First Name
             .input-group.mb-3
-              input.form-control(type='hidden', id='screen_id')
-              input.form-control(type='text', placeholder='Resolution', id='screen_resolution' required)
+              input.form-control(type='hidden', id='customer_user_id')
+              input.form-control(type='text', placeholder='First Name', id='customer_user_first_name'  required)
               .input-group-append
                 .input-group-text
-                  span.fas.fa-desktop
-            label Size
+                  span.fas.fa-hdd
+            label Last Name     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Size', id='screen_size', required)
+              input.form-control(type='text', placeholder='Last Name', id='customer_user_last_name', required)
               .input-group-append
                 .input-group-text
-                  span.fas.fa-laptop
+                  span.far.fa-hdd      
+            label Role
+            .input-group.mb-3
+              select.custom-select#customer_role_selection_box
+               option(value="Customer Executive") Customer Executive
+               option(value="Customer Manager") Customer Manager
+                option(value="Customer User") Customer User
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-hdd
+            label Contact Number     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Contact Number', id='customer_user_contact_no', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label Street      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Street', id='customer_user_street', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label City      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='City', id='customer_user_city', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label State     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='State', id='customer_user_state', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Zip       
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Zip', id='customer_user_zip', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd 
+            label Email
+            .input-group.mb-3
+              input.form-control(type='email', placeholder='Email', id='customer_user_email', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label Password
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Password', id='customer_user_password', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd 
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_screen_button") Save changes  
+            button.btn.btn-primary(type='button', id="add_customer_user_button") Save changes  
 
-    #storage-modal.modal.fade
+    #location-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#storage-modal-title Add Storage
+            h4.modal-title#location-modal-title Add Location
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
             form
             label Type
             .input-group.mb-3
-             input.form-control(type='hidden', id='storage_id')
-             select.custom-select#storage_type_selection_box
-               option(value="hdd") HDD
-               option(value="ssd") SSD
+             input.form-control(type='hidden', id='location_id')
+             select.custom-select#location_type_selection_box
+               option(value="factory") Factory
+               option(value="warehouse") Warehouse
+               option(value="distribution_center") Distribution Center
+               option(value="retail_store") Retail store
                 .input-group-append
-            label Size    
+            label Name    
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Size', id='storage_size', required)
+              input.form-control(type='text', placeholder='Name', id='location_name', required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-memory
+            label Street      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Street', id='location_street', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label City      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='City', id='location_city', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd
+            label State     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='State', id='location_state', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Zip       
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Zip', id='location_zip', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd  
+            .row
+              .col-6        
+                .input-group.mb-3
+                  .custom-control.custom-checkbox
+                    input#customCheckbox1.custom-control-input(type='checkbox', value='geofence_enable')
+                    label.custom-control-label(for='customCheckbox1') Geofence Enable 
+               
+              .col-6
+                .input-group.mb-3
+                  .custom-control.custom-checkbox
+                    input#customCheckbox2.custom-control-input(type='checkbox', value='final_dest')
+                    label.custom-control-label(for='customCheckbox2') Final Destination           
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button', id="add_storage_button") Save changes
