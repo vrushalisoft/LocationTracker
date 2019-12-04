@@ -24,8 +24,8 @@ var locationStreet = "#location_street"
 var locationCity = "#location_city" 
 var locationState = "#location_state"
 var locationZip = "#location_zip"
-var locationGeofence = "#location_geofence"
-var locationFinalDest = "#location_final_dest"
+var locationGeofence = "#geofence_box"
+var locationFinalDest = "#final_dest_box"
 var locationId = "#location_id"
 var locationDataColumns = 
 [
@@ -60,8 +60,8 @@ function setLocationFormValues(row) {
   $(locationCity).val(row.city);
   $(locationState).val(row.state);
   $(locationZip).val(row.zip);
-  $(locationGeofence).val(row.geofence);
-  $(locationFinalDest).val(row.final_dest);
+  $(locationGeofence).prop('checked', row.geofence);
+  $(locationFinalDest).prop('checked',row.final_dest);
 }
 
 function getLocationFormValues() {
@@ -72,8 +72,8 @@ function getLocationFormValues() {
     city:$(locationCity).val(),
     state:$(locationState).val(),
     zip:$(locationZip).val(),
-    geofence:$(locationGeofence).val(),
-    final_dest:$(locationFinalDest).val(),
+    geofence:$(locationGeofence).is(':checked'),
+    final_dest:$(locationFinalDest).is(':checked'),
     _id: $(locationId).val()
   
   }
@@ -170,10 +170,10 @@ function addLocation(data) {
   console.log('Add Location');
   console.log(data);
   if(data) {
-    if(data.type && data.name && data.street && data.city && data.state && data.zip && data.geofence && data.final_dest ) {
+    if(data.type && data.name && data.street && data.city && data.state && data.zip  ) {
       var row = $.grep(location_data, function (n,i) {
         if(data._id) {
-          if( n.type && n.name && n.street && n.city && n.state && n.zip && n.geofence && n.final_dest ) {
+          if( n.type && n.name && n.street && n.city && n.state && n.zip  ) {
             return n.name.toLowerCase() == data.name.toLowerCase() && n.street.toLowerCase() == data.street.toLowerCase() && n.city.toLowerCase() == data.city.toLowerCase() && n.state.toLowerCase() == data.state.toLowerCase() && n.zip.toLowerCase() == data.zip.toLowerCase()  && n._id != data._id
           }
         } else return n.name.toLowerCase() == data.name.toLowerCase() && n.street.toLowerCase() == data.street.toLowerCase() && n.city.toLowerCase() == data.city.toLowerCase() && n.state.toLowerCase() == data.state.toLowerCase() && n.zip.toLowerCase() == data.zip.toLowerCase()

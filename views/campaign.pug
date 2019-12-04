@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  // Main content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          .card.card-primary.card-outline
+            .card-header
+              h5.m-0 Campaign
+                button.btn.btn-sm.btn-primary(style='float: right;' onclick="addCampaign(null)")
+                  .fa.fa-plus
+                  |   Add Campaign
+            .card-body
+              table#campaignTable.table.table-bordered.table-striped
+      
+
+block append scripts
+  script(src='dist/js/pages/campaign.js')
+
+  script.
+    $(function () {
+      getCampaignData()
+    });

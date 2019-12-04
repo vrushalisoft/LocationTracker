@@ -171,7 +171,25 @@ html(lang='en')
                   a.nav-link(href='/location')
                     i.nav-icon.fas.fa-layer-group
                     p
-                      | Location    
+                      | Location   
+
+                li.nav-item
+                  a.nav-link(href='/campaign')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Campaign  
+
+                li.nav-item
+                  a.nav-link(href='/reps')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Representative 
+
+                li.nav-item
+                  a.nav-link(href='/asset_details')
+                    i.nav-icon.fas.fa-layer-group
+                    p
+                      | Asset Deails 
 
             // /.sidebar-menu
             // /.sidebar
@@ -544,64 +562,182 @@ html(lang='en')
               .col-6        
                 .input-group.mb-3
                   .custom-control.custom-checkbox
-                    input#customCheckbox1.custom-control-input(type='checkbox', value='geofence_enable')
-                    label.custom-control-label(for='customCheckbox1') Geofence Enable 
+                    input#geofence_box.custom-control-input(type='checkbox', value='geofence_enable')
+                    label.custom-control-label(for='geofence_box') Geofence Enable 
                
               .col-6
                 .input-group.mb-3
                   .custom-control.custom-checkbox
-                    input#customCheckbox2.custom-control-input(type='checkbox', value='final_dest')
-                    label.custom-control-label(for='customCheckbox2') Final Destination           
+                    input#final_dest_box.custom-control-input(type='checkbox', value='final_dest')
+                    label.custom-control-label(for='final_dest_box') Final Destination           
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_storage_button") Save changes
+            button.btn.btn-primary(type='button', id="add_location_button") Save changes
 
-    #brand-modal.modal.fade
+    #campaign-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#brand-modal-title Add Brand
+            h4.modal-title#campaign-modal-title Add Campaign
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') 
+          .modal-body
+            form
+            label Campaign Name
+             .input-group.mb-3
+               input.form-control(type='hidden', id='_id')
+               input.form-control(type='text', placeholder='Campaign Name', id='campaign_name' required)
+
+            .row
+              .col-6        
+                label Total Assets
+                .input-group.mb-3
+                  input.form-control(type='email', placeholder='Total Assets', id='campaign_total_assets', required)
+              
+              .col-6  
+                label Total Devices    
+                .input-group.mb-3
+                  input.form-control(type='text', placeholder='Total Devices', id='campaign_total_devices', required)
+
+            .row
+              .col-6       
+                label Start Date    
+                .input-group.mb-3
+                  input.selector.form-control(type='text', placeholder='Start Date', id='campaign_start_date', required)
+              .col-6     
+                label End Date    
+                .input-group.mb-3
+                  input.selector.form-control(type='text', placeholder='End Date', id='campaign_end_date ', required)
+              
+            label Subscription
+            .input-group.mb-3
+              select.custom-select#campaign_subscription_selection_box
+                option(value="12_months") 12 Months
+                option(value="24_months") 24 Months
+          .modal-footer.justify-content-between
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button', id="add_campaign_button") Save changes         
+
+    #reps-modal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title#reps-modal-title Add Representative
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
             form
             label Name
             .input-group.mb-3
-              input.form-control(type='hidden', id='brand_id')
-              input.form-control(type='text', placeholder='Name', id='brand_name' required)
+              input.form-control(type='hidden', id='reps_id')
+              input.form-control(type='text', placeholder='Name', id='reps_name' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-store 
+            label Email
+            .input-group.mb-3
+              input.form-control(type='email', placeholder='Email', id='reps_email', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
+            label Phone Number     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Phone Number', id='reps_phone_no', required)
+              .input-group-append
+                .input-group-text
+                  span.far.fa-hdd      
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_brand_button") Save changes
+            button.btn.btn-primary(type='button', id="add_reps_button") Save changes
 
-    #modelno-modal.modal.fade
+    #asset_details-modal.modal.fade
       .modal-dialog
         .modal-content
           .modal-header
-            h4.modal-title#modelno-modal-title Add ModelNo
+            h4.modal-title#asset_details-modal-title Add Asset Details
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
             form
-            label Name
+            label Total Assets
             .input-group.mb-3
-              input.form-control(type='hidden', id='modelno_id')
-              input.form-control(type='text', placeholder='Name', id='modelno_name' required)
+              input.form-control(type='hidden', id='asset_details_id')
+              input.form-control(type='text', placeholder='Total Assets', id='total_assets' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop
+            label Name      
             .input-group.mb-3
-              select#brand_id_selection_box.custom-select
+              input.form-control(type='text', placeholder='Name', id='name' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop
+            label Image      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Image', id='image' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop 
+            label Height      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Height', id='height' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop 
+            label Width      
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Width', id='width' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop 
+            label Manufacturing Date     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Manufacturing Date', id='mfg_date' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop
+            label Shipping Date     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='shipping Date', id='est_shipping_date' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop  
+            label Channel     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Channel', id='channel' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop 
+            label Program     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Program', id='program' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop 
+            label Promotion     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Promotion', id='promotion' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop
+            label Merchandise Type     
+            .input-group.mb-3
+              input.form-control(type='text', placeholder='Merchandise Type', id='merchandise_type' required)
+              .input-group-append
+                .input-group-text
+                  span.fas.fa-laptop           
+                                               
           .modal-footer.justify-content-between
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button', id="add_modelno_button") Save changes                   
+            button.btn.btn-primary(type='button', id="add_assets_details_button") Save changes   
+
+                           
 
       block scripts
         // REQUIRED SCRIPTS
         // jQuery
         script(src='plugins/jquery/jquery.min.js')
+        script(src='plugins/jquery-ui/jquery-ui.js')
         // Bootstrap 4
         script(src='plugins/bootstrap/js/bootstrap.bundle.min.js')
         script(src='plugins/datatables/jquery.dataTables.js')

@@ -26,6 +26,11 @@ var companyController = require('./controllers/company');
 var customerController = require('./controllers/customer');
 var customer_userController = require('./controllers/customer_user');
 var locationController = require('./controllers/location');
+var campaignController = require('./controllers/campaign');
+var repsController = require('./controllers/reps');
+var asset_detailsController = require('./controllers/asset_details');
+
+
 
 var app = express();
 
@@ -90,6 +95,18 @@ app.get('/location', locationController.index)
 app.get('/location/all', locationController.getAllLocations)
 app.get('/location/id/:_id', locationController.getLocationById)
 app.post('/location', locationController.upsertLocation)
+app.get('/campaign', campaignController.index)
+app.get('/campaign/all', campaignController.getAllCampaigns)
+app.get('/campaign/id/:_id', campaignController.getCampaignById)
+app.post('/campaign', campaignController.upsertCampaign)
+app.get('/reps', repsController.index)
+app.get('/reps/all', repsController.getAllRepss)
+app.get('/reps/id/:_id', repsController.getRepsById)
+app.post('/reps', repsController.upsertReps)
+app.get('/asset_details', asset_detailsController.index)
+app.get('/asset_details/all', asset_detailsController.getAllAssetDetailss)
+app.get('/asset_details/id/:_id', asset_detailsController.getAssetDetailsById)
+app.post('/asset_details', asset_detailsController.upsertAssetDetails)
 
 
 
