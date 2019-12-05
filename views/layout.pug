@@ -248,13 +248,13 @@ html(lang='en')
             label IMEI Number
             .input-group.mb-3
               input.form-control(type='hidden', id='device_id')
-              input.form-control(type='text', placeholder='IMEI Number', id='device_imei_no' required)
+              input.form-control(type='number', placeholder='IMEI Number', id='device_imei_no' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-cog
             label Sim Number   
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Sim Number', id='device_sim_no', required)
+              input.form-control(type='number', placeholder='Sim Number', id='device_sim_no', required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-microchip   
@@ -295,7 +295,7 @@ html(lang='en')
                   span.fas.fa-hdd
             label Contact Number     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Contact Number', id='account_contact_no', required)
+              input.form-control(type='number', placeholder='Contact Number', id='account_contact_no', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd
@@ -325,7 +325,7 @@ html(lang='en')
                   span.far.fa-hdd      
             label Zip       
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Zip', id='account_zip', required)
+              input.form-control(type='number', placeholder='Zip', id='account_zip', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd 
@@ -381,7 +381,7 @@ html(lang='en')
                   span.far.fa-hdd      
             label Zip       
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Zip', id='company_zip', required)
+              input.form-control(type='number', placeholder='Zip', id='company_zip', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd      
@@ -425,7 +425,7 @@ html(lang='en')
                   span.far.fa-hdd      
             label Zip       
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Zip', id='customer_zip', required)
+              input.form-control(type='number', placeholder='Zip', id='customer_zip', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd 
@@ -466,7 +466,7 @@ html(lang='en')
                   span.fas.fa-hdd
             label Contact Number     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Contact Number', id='customer_user_contact_no', required)
+              input.form-control(type='number', placeholder='Contact Number', id='customer_user_contact_no', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd
@@ -490,7 +490,7 @@ html(lang='en')
                   span.far.fa-hdd      
             label Zip       
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Zip', id='customer_user_zip', required)
+              input.form-control(type='number', placeholder='Zip', id='customer_user_zip', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd 
@@ -554,7 +554,7 @@ html(lang='en')
                   span.far.fa-hdd      
             label Zip       
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Zip', id='location_zip', required)
+              input.form-control(type='number', placeholder='Zip', id='location_zip', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd  
@@ -592,12 +592,12 @@ html(lang='en')
               .col-6        
                 label Total Assets
                 .input-group.mb-3
-                  input.form-control(type='email', placeholder='Total Assets', id='campaign_total_assets', required)
+                  input.form-control(type='number', placeholder='Total Assets', id='campaign_total_assets', required)
               
               .col-6  
                 label Total Devices    
                 .input-group.mb-3
-                  input.form-control(type='text', placeholder='Total Devices', id='campaign_total_devices', required)
+                  input.form-control(type='number', placeholder='Total Devices', id='campaign_total_devices', required)
 
             .row
               .col-6       
@@ -642,7 +642,7 @@ html(lang='en')
                   span.far.fa-hdd      
             label Phone Number     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Phone Number', id='reps_phone_no', required)
+              input.form-control(type='number', placeholder='Phone Number', id='reps_phone_no', required)
               .input-group-append
                 .input-group-text
                   span.far.fa-hdd      
@@ -662,7 +662,7 @@ html(lang='en')
             label Total Assets
             .input-group.mb-3
               input.form-control(type='hidden', id='asset_details_id')
-              input.form-control(type='text', placeholder='Total Assets', id='total_assets' required)
+              input.form-control(type='number', placeholder='Total Assets', id='total_assets', required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop
@@ -672,21 +672,15 @@ html(lang='en')
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop
-            label Image      
-            .input-group.mb-3
-              input.form-control(type='text', placeholder='Image', id='image' required)
-              .input-group-append
-                .input-group-text
-                  span.fas.fa-laptop 
             label Height      
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Height', id='height' required)
+              input.form-control(type='number', placeholder='Height', id='height' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop 
             label Width      
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Width', id='width' required)
+              input.form-control(type='number', placeholder='Width', id='width' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop 
@@ -698,10 +692,8 @@ html(lang='en')
                   span.fas.fa-laptop
             label Shipping Date     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='shipping Date', id='est_shipping_date' required)
-              .input-group-append
-                .input-group-text
-                  span.fas.fa-laptop  
+              input#est_shipping_date(type='text',placeholder='shipping Date', required)
+              
             label Channel     
             .input-group.mb-3
               input.form-control(type='text', placeholder='Channel', id='channel' required)
@@ -738,6 +730,7 @@ html(lang='en')
         // jQuery
         script(src='plugins/jquery/jquery.min.js')
         script(src='plugins/jquery-ui/jquery-ui.js')
+         
         // Bootstrap 4
         script(src='plugins/bootstrap/js/bootstrap.bundle.min.js')
         script(src='plugins/datatables/jquery.dataTables.js')

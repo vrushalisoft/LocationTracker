@@ -59,7 +59,7 @@ module.exports.getAssetDetailsById = (req, res) => {
     message: "Err Querying database while fetching asset_details by id, Try again",
     details: []
   };
-  Processor.findById(asset_detailsId, {__v:0}, (err, asset_details)=>{
+  AssetDetails.findById(asset_detailsId, {__v:0}, (err, asset_details)=>{
     if(err) {
       res.json(retObj)
     } else {

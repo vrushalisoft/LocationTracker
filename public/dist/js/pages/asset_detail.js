@@ -25,50 +25,76 @@ var default_asset_details = {
 var asset_detailsTableId = "#asset_detailsTable"
 var asset_detailsModelId = "#asset_details-modal"
 var asset_detailsModalTitle = "#asset_details-modal-title"
-var asset_detailsAssetDetailsName = "#asset_details_name"
-var asset_detailsStreet = "#asset_details_street"
-var asset_detailsCity = "#asset_details_city" 
-var asset_detailsState = "#asset_details_state"
-var asset_detailsZip = "#asset_details_zip"
+var asset_detailsTotalAssets = "#total_assets"
+var asset_detailsName = "#name"
+var asset_detailsImage = "#image"
+var asset_detailsHeight = "#height" 
+var asset_detailsWidth = "#width"
+var asset_detailsChannel = "#channel"
+var asset_detailsProgram = "#program"
+var asset_detailsMerchandiseType = "#merchandise_type"
+var asset_detailsPromotion = "#promotion"
 var asset_detailsId = "#asset_details_id"
 var asset_detailsDataColumns = 
 [
-  { title: "AssetDetails Name", data: null, render: 'asset_details_name' },
-  { title: "Street", data: null, render: 'street' },
-  { title: "City", data: null, render: 'city' },
-  { title: "State", data: null, render: 'state' },
-  { title: "Zip", data: null, render: 'zip' },
-  { title: "Date_Recorded", data: null, render: function (data, type, row, meta) {
-      return data.day + '/' + data.month + '/' + data.year 
+  { title: "Total Assets", data: null, render: 'total_assets' },
+  { title: "Name", data: null, render: 'name' },
+  { title: "Height", data: null, render: 'height' },
+  { title: "Width", data: null, render: 'width' },
+  { title: "Channel", data: null, render: 'channel' },
+  { title: "Program", data: null, render: 'program' },
+  { title: "Merchandise Type", data: null, render: 'merchandise_type' },
+  { title: "Promotion", data: null, render: 'promotion' },
+  { title: "Manufacturing Date ", data: null, render: function (data, type, row, meta) {
+      return data.mfg_day + '/' + data.mfg_month + '/' + data.mfg_year 
     } 
+  },
+  { title: "Shipping Date", data: null, render: function (data, type, row, meta) {
+    return data.est_shipping_day + '/' + data.est_shipping_month + '/' + data.est_shipping_year 
+  } 
+  },
+  { title: "Date_Recorded", data: null, render: function (data, type, row, meta) {
+  return data.day + '/' + data.month + '/' + data.year 
+  } 
   },
   { title: "", data: null, render: function (data, type, row, meta) {
       return data.active ? '<span style="color:green">Active</span>' : '<span style="color:red">Not Active</span>'
     } 
   },
+  { title: 'Image', render: function (data, type, row, meta) {
+    return type === 'display'? '<input type="file" name="pic" accept="image/*"></input> <label class="custom-file-label" for="customFile">Choose file</label>':data
+  }
+  },
   { data: '_id', render: function (data, type, row, meta) {
     return type === 'display'? '<button class="btn btn-warning btn-block" onclick="editAssetDetails(\''+data+'\')">Edit</button>':data
   },
-}
+  }
 ]
 function setAssetDetailsFormValues(row) {
   console.log('Set AssetDetails Form');
   console.log(row);
   $(asset_detailsId).val(row._id);
-  $(asset_detailsAssetDetailsName).val(row.asset_details_name);
-  $(asset_detailsStreet).val(row.street);
-  $(asset_detailsCity).val(row.city);
-  $(asset_detailsState).val(row.state);
-  $(asset_detailsZip).val(row.zip);
+  $(asset_detailsTotalAssets).val(row.total_assets);
+  $(asset_detailsName).val(row.name);
+  $(asset_detailsHeight).val(row.height);
+  $(asset_detailsWidth).val(row.width);  
+  $(asset_detailsChannel).val(row.channel); 
+  $(asset_detailsProgram).val(row.program);  
+  $(asset_detailsMerchandiseType).val(row.merchandise_type);
+  $(asset_detailsPromotion).val(row.promotion); 
+
 }
 
 function getAssetDetailsFormValues() {
   return {
-    asset_details_name:$(asset_detailsAssetDetailsName).val(),
-    street:$(asset_detailsStreet).val(),
-    city:$(asset_detailsCity).val(),
-    state:$(asset_detailsState).val(),
-    zip:$(asset_detailsZip).val(),
+    total_assets:$(asset_detailsTotalAssets).val(),
+    name:$(asset_detailsName).val(),
+    height:$(asset_detailsHeight).val(),
+    width:$(asset_detailsWidth).val(),
+    channel:$(asset_detailsChannel).val(),
+    program:$(asset_detailsProgram).val(),
+    merchandise_type: $(asset_detailsMerchandiseType).val(),
+    promotion:$(asset_detailsPromotion).val(),
     _id: $(asset_detailsId).val()
   
   }
@@ -78,7 +104,7 @@ function getAssetDetailsUrl() {
   return used_host + '/asset_details'
 }
 
-function getAssetDetailsData(querry) {
+function getAssetDetailsData (querry) {
   $.ajax({
     cache: false,
     type: 'GET',
@@ -152,7 +178,7 @@ function initAssetDetailsTable() {
     "lengthMenu": [[5, 10], [5, 10]],
     "autoWidth": true,
     "data": asset_details_data,
-    "stateSave": true,
+    "widthSave": true,
     "columns": asset_detailsDataColumns
   })
 }
@@ -165,16 +191,16 @@ function addAssetDetails(data) {
   console.log('Add AssetDetails');
   console.log(data);
   if(data) {
-    if(data.asset_details_name && data.street && data.city && data.state && data.zip ) {
+    if(data.name && data.total_assets && data.height && data.width && data.channel && data.program && data.promotion && data.merchandise_type ) {
       var row = $.grep(asset_details_data, function (n,i) {
         if(data._id) {
-          if( n.asset_details_name && n.street && n.city && n.state && n.zip ) {
-            return n.asset_details_name.toLowerCase() == data.asset_details_name.toLowerCase() && n.street.toLowerCase() == data.street.toLowerCase() && n.city.toLowerCase() == data.city.toLowerCase() && n.state.toLowerCase() == data.state.toLowerCase() && n.zip.toLowerCase() == data.zip.toLowerCase()  && n._id != data._id
+          if( n.name && n.total_assets && n.height && n.width && n.channel && n.program && n.promotion && n.merchandise_type ) {
+            return n.name.toLowerCase() == data.name.toLowerCase() && n.total_assets.toLowerCase() == data.total_assets.toLowerCase() && n.height.toLowerCase() == data.height.toLowerCase() && n.width.toLowerCase() == data.width.toLowerCase() && n.channel.toLowerCase() == data.channel.toLowerCase() && n.program.toLowerCase() == data.program.toLowerCase() && n.merchandise_type.toLowerCase() == data.merchandise_type.toLowerCase()  && n.promotion.toLowerCase() == data.promotion.toLowerCase() && n._id != data._id
           }
-        } else return n.asset_details_name.toLowerCase() == data.asset_details_name.toLowerCase() && n.street.toLowerCase() == data.street.toLowerCase() && n.city.toLowerCase() == data.city.toLowerCase() && n.state.toLowerCase() == data.state.toLowerCase() && n.zip.toLowerCase() == data.zip.toLowerCase() 
+        } else return n.name.toLowerCase() == data.name.toLowerCase() && n.total_assets.toLowerCase() == data.total_assets.toLowerCase() && n.height.toLowerCase() == data.height.toLowerCase() && n.width.toLowerCase() == data.width.toLowerCase() && n.channel.toLowerCase() == data.channel.toLowerCase() && n.program.toLowerCase() == data.program.toLowerCase() && n.merchandise_type.toLowerCase() == data.merchandise_type.toLowerCase()  && n.promotion.toLowerCase() == data.promotion.toLowerCase()
       })
       if(row.length > 0) {
-        notifyUser('warning', 'AssetDetails With AssetDetails Name: '+data.asset_details_name+  'Or AssetDetails With street: '+data.street + 'Or AssetDetails With City: '+data.city + 'Or AssetDetails With state: '+data.state + 'Or AssetDetails With Zip: '+data.zip +'Already Exists!')
+        notifyUser('warning', 'AssetDetails With AssetDetails Name: '+data.name+  'Or AssetDetails With total_assets: '+data.total_assets + 'Or AssetDetails With Height: '+data.height + 'Or AssetDetails With Width: '+data.width + 'Or AssetDetails With Channel: '+data.channel + 'Or AssetDetails With Programm: '+data.program + 'Or AssetDetails With Merchandise Type: '+data.merchandise_type + 'Or AssetDetails With Promotion: '+data.promotion +'Already Exists!')
       } else {
         console.log('Saving Data')
         console.log(data)
@@ -210,7 +236,7 @@ function editAssetDetails(data) {
   }
 }
 
-$('#add_asset_details_button').click(function (params) {
+$('#add_assets_details_button').click(function (params) {
   var data = getAssetDetailsFormValues()
   if(!data._id){
     data.day = today.getDate();
