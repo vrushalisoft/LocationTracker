@@ -24,8 +24,9 @@ var campaignName = "#campaign_name"
 var campaignTotalAssets = "#campaign_total_assets"
 var campaignTotalDevices = "#campaign_total_devices" 
 var campaignSubscription = "#campaign_subscription_selection_box"
+var startDate = "#campaign_start_date"
+var endDate = "#campaign_end_date"
 var campaignId = "#campaign_id"
-var dateFormat = ".selector"
 var campaignDataColumns = 
 [
   { title: "Name", data: null, render: 'name' },
@@ -61,23 +62,29 @@ function setCampaignFormValues(row) {
   $(campaignTotalAssets).val(row.total_assets);
   $(campaignTotalDevices).val(row.total_devices);
   $(campaignSubscription).val(row.subscription);
-  $(dateFormat).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  
 
 }
 
 function getCampaignFormValues() {
+  console.log($(startDate).val())
+  var start_date = $(startDate).val().split('-')
+  var end_date = $(endDate).val.split('-')
   return {
-    campaign_name:$(campaignCampaignName).val(),
+    name:$(campaignName).val(),
     total_assets:$(campaignTotalAssets).val(),
     total_devices:$(campaignTotalDevices).val(),
+    start_day: start_date[0],
+    start_month: start_date[1],
+    start_year: start_date[2],
+    start_day: start_date[0],
+    start_month: start_date[1],
+    start_year: start_date[2],
     subscription:$(campaignSubscription).val(),
-    //datepicker( "option", "dateFormat" )
-  
     _id: $(campaignId).val()
   
   }
 }
-
 function getCampaignUrl() {
   return used_host + '/campaign'
 }

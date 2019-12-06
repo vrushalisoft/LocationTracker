@@ -585,7 +585,7 @@ html(lang='en')
             form
             label Campaign Name
              .input-group.mb-3
-               input.form-control(type='hidden', id='_id')
+               input.form-control(type='hidden', id='campaign_id')
                input.form-control(type='text', placeholder='Campaign Name', id='campaign_name' required)
 
             .row
@@ -603,11 +603,11 @@ html(lang='en')
               .col-6       
                 label Start Date    
                 .input-group.mb-3
-                  input.selector.form-control(type='text', placeholder='Start Date', id='campaign_start_date', required)
+                  input.form-control(type='date', placeholder='Start Date', id='campaign_start_date', required)
               .col-6     
                 label End Date    
                 .input-group.mb-3
-                  input.selector.form-control(type='text', placeholder='End Date', id='campaign_end_date ', required)
+                  input.form-control(type='date', placeholder='End Date', id='campaign_end_date ', required)
               
             label Subscription
             .input-group.mb-3
@@ -686,13 +686,13 @@ html(lang='en')
                   span.fas.fa-laptop 
             label Manufacturing Date     
             .input-group.mb-3
-              input.form-control(type='text', placeholder='Manufacturing Date', id='mfg_date' required)
+              input.form-control(type='date', placeholder='Manufacturing Date', id='mfg_date' required)
               .input-group-append
                 .input-group-text
                   span.fas.fa-laptop
             label Shipping Date     
             .input-group.mb-3
-              input#est_shipping_date(type='text',placeholder='shipping Date', required)
+              input#est_shipping_date(type='date',placeholder='shipping Date', required)
               
             label Channel     
             .input-group.mb-3

@@ -15,3 +15,4 @@ function notifyUser(type, message) {
     title: message
   })
 }
+
